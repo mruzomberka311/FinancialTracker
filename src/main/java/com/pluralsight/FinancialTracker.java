@@ -1,12 +1,12 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 
 public class FinancialTracker {
 
@@ -54,37 +54,60 @@ public class FinancialTracker {
         scanner.close();
     }
 
-    public static void loadTransactions(String fileName) {
+    public static void loadTransactions(String fileName)
+    {
+        File file = new File(fileName);
+        String line;
 
-       String line;
-        try{
-        FileReader reader = new FileReader("transactions.csv");
-        BufferedReader buffer = new BufferedReader(reader);
-
-        while ((line = buffer.readLine()) != null){
-            System.out.println(line);
-            String[] tokens = line.split("\\|");
-            for (String line: tokens){
-                System.out.println(line );
-            }
-        }
-        }
+        if (file.exists())
+        {
+            try
+            {
+                FileReader reader = new FileReader(fileName);
+                BufferedReader buffer = new BufferedReader(reader);
 
 
-        catch(Exception ex){
+
+                while ((line = buffer.readLine()) != null)
+                {
+                    System.out.println(line);
+                    String[] tokens = line.split("\\|");
+                    LocalDate date = LocalDate.parse(tokens[0], DATE_FORMATTER);
+                    LocalTime time = LocalTime.parse(tokens[1], TIME_FORMATTER);
+                    String description = tokens[2];
+                    String vendor = tokens[3];
+                    double amount = Double.parseDouble(tokens[4]);
+                    transactions.add(new Transaction(date, time, description, vendor, amount));
+                }
+            } catch (Exception e)
+            {
                 System.err.println("Error processing file");
-                ex.printStackTrace();
+                e.printStackTrace();
+            }
+        } else
+        {
+            System.out.println("File does not exist. Creating new file: " + fileName);
+            try 
+            {
+                File myFile = new File(fileName);
+                myFile.createNewFile();
+            }
+            catch (Exception e) {
+                System.err.println("Error creating file");
+                e.printStackTrace();
             }
 
+        }
 
-        // This method should load transactions from a file with the given file name.
-        // If the file does not exist, it should be created.
-        // The transactions should be stored in the `transactions` ArrayList.
-        // Each line of the file represents a single transaction in the following format:
-        // <date>|<time>|<description>|<vendor>|<amount>
-        // For example: 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50
-        // After reading all the transactions, the file should be closed.
-        // If any errors occur, an appropriate error message should be displayed.
+            // This method should load transactions from a file with the given file name.
+            // If the file does not exist, it should be created.
+            // The transactions should be stored in the `transactions` ArrayList.
+            // Each line of the file represents a single transaction in the following format:
+            // <date>|<time>|<description>|<vendor>|<amount>
+            // For example: 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50
+            // After reading all the transactions, the file should be closed.
+            // If any errors occur, an appropriate error message should be displayed.
+
     }
 
     private static void addDeposit(Scanner scanner) {
