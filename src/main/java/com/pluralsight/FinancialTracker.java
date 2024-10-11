@@ -87,7 +87,7 @@ public class FinancialTracker {
         } else
         {
             System.out.println("File does not exist. Creating new file: " + fileName);
-            try 
+            try
             {
                 File myFile = new File(fileName);
                 myFile.createNewFile();
@@ -162,6 +162,10 @@ public class FinancialTracker {
     }
 
     private static void displayLedger() {
+        for (Transaction i : transactions)
+        {
+            System.out.println(i);
+        }
         // This method should display a table of all transactions in the `transactions` ArrayList.
         // The table should have columns for date, time, description, vendor, and amount.
     }
