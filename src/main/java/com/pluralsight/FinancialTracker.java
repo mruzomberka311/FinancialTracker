@@ -125,11 +125,18 @@ public class FinancialTracker {
            scanner.nextLine();
             if (depositAmount <= 0)
             {
-                System.out.println("The amount must be a positive value.");
-                return;
+                System.out.println("The amount must be a positive value. Would you like to proceed?  Y/N");
+                if (scanner.nextLine().equalsIgnoreCase("Y"))
+                {
+                    Math.abs(depositAmount);
+                } else if (scanner.nextLine().equalsIgnoreCase("N"))
+                {
+                    return;
+                }
             }
             Transaction deposit = new Transaction(currentDate, currentTime, depositDescription, depositVendor, depositAmount);
             transactions.add(deposit);
+            System.out.println("Deposit succsessful!");
         }
         catch (Exception e)
         {
@@ -146,7 +153,8 @@ public class FinancialTracker {
     }
 
     private static void addPayment(Scanner scanner) {
-        try {
+        try
+        {
             System.out.println("Please enter the date: ");
             LocalDate currentDate = LocalDate.parse(scanner.nextLine().formatted(DATE_FORMAT));
             System.out.println("Please enter the current time: ");
@@ -160,16 +168,27 @@ public class FinancialTracker {
             scanner.nextLine();
             if (paymentAmount >= 0)
             {
-                System.out.println("The amount must be a negative value.");
+                System.out.println("The amount must be a negative value. Would you like to proceed? Y/N");
+
+                if (scanner.nextLine().equalsIgnoreCase("Y"))
+                {
+
+                    paymentAmount *= -1;
+                }
+                else if (scanner.nextLine().equalsIgnoreCase("N"))
+                {
+                    return;
+                }
 
             }
-            Transaction payment = new Transaction(currentDate, currentTime, paymentDescription, paymentVendor, paymentAmount);
+            Transaction payment = new Transaction(currentDate,currentTime, paymentDescription, paymentVendor, paymentAmount);
             transactions.add(payment);
         }
         catch (Exception e)
         {
             System.err.println("Invalid input");
             e.printStackTrace();
+        }
 
         // This method should prompt the user to enter the date, time, description, vendor, and amount of a payment.
         // The user should enter the date and time in the following format: yyyy-MM-dd HH:mm:ss
@@ -178,7 +197,7 @@ public class FinancialTracker {
         // The new payment should be added to the `transactions` ArrayList.
     }
 
-    private static void ledgerMenu(Scanner scanner) {
+    private static void ledgerMenu(Scanner scanner){
         boolean running = true;
         while (running) {
             System.out.println("Ledger");
