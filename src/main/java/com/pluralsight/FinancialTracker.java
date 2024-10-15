@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -233,23 +234,39 @@ public class FinancialTracker {
     }
 
     private static void displayLedger() {
-        for (Transaction i : transactions)
+
+        for (int i = 0; i < transactions.size(); i++)
         {
-            System.out.println(i);
+            System.out.println(transactions.get(i));
         }
+
         // This method should display a table of all transactions in the `transactions` ArrayList.
         // The table should have columns for date, time, description, vendor, and amount.
     }
 
-    private static void displayDeposits() {
+    private static void displayDeposits()
+    {
+        for (Transaction deposit : transactions)
+        {
+            System.out.println(deposit);
+        }
+
+        }
         // This method should display a table of all deposits in the `transactions` ArrayList.
         // The table should have columns for date, time, description, vendor, and amount.
-    }
 
-    private static void displayPayments() {
+
+    private static void displayPayments()
+    {
+
+       for (Transaction payment : transactions)
+        {
+            System.out.println(payment);
+        }
+    }
         // This method should display a table of all payments in the `transactions` ArrayList.
         // The table should have columns for date, time, description, vendor, and amount.
-    }
+
 
     private static void reportsMenu(Scanner scanner) {
         boolean running = true;
@@ -267,6 +284,7 @@ public class FinancialTracker {
 
             switch (input) {
                 case "1":
+
                     // Generate a report for all transactions within the current month,
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "2":
@@ -293,6 +311,12 @@ public class FinancialTracker {
 
 
     private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) {
+        for (Transaction LocalDate : transactions)
+        {
+            System.out.println(LocalDate);
+           Transaction startDate = LocalDate.parse(LocalDate.getDate());
+        }
+
         // This method filters the transactions by date and prints a report to the console.
         // It takes two parameters: startDate and endDate, which represent the range of dates to filter by.
         // The method loops through the transactions list and checks each transaction's date against the date range.
