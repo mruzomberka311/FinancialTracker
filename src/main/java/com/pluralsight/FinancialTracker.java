@@ -138,6 +138,14 @@ public class FinancialTracker {
             Transaction deposit = new Transaction(currentDate, currentTime, depositDescription, depositVendor, depositAmount);
             transactions.add(deposit);
             System.out.println("Deposit succsessful!");
+
+            FileWriter writer = new FileWriter(FILE_NAME ,true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
+            bufferedWriter.write(deposit);
+            bufferedWriter.close();
+
+
         }
         catch (Exception e)
         {
@@ -313,8 +321,18 @@ public class FinancialTracker {
     private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) {
         for (Transaction LocalDate : transactions)
         {
-            System.out.println(LocalDate);
-           Transaction startDate = LocalDate.parse(LocalDate.getDate());
+            System.out.println(transactions);
+            {
+                if (startDate == null || endDate == null){
+                    System.out.println("Invalid date");
+
+                }else if (startDate.isBefore(LocalDate) && endDate.isAfter(LocalDate)){
+                    for ()
+                }
+
+
+
+            }
         }
 
         // This method filters the transactions by date and prints a report to the console.
