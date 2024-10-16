@@ -337,16 +337,16 @@ public class FinancialTracker {
 
         for (Transaction transaction : transactions)
         {
-            System.out.println(transactions);
-            LocalDate transactionDate = transaction.getDate();
 
-            {
-                if (startDate == null || endDate == null)
+            LocalDate transactionDate = transaction.getDate();
+            if (startDate == null  || endDate == null)
                 {
                     System.out.println("Invalid date");
 
-                }else if (transactionDate.isBefore(endDate) && transactionDate.isAfter(startDate)) {
-                    System.out.printf(Transaction.getDate(), Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
+                }else if (transactionDate.isBefore(endDate) && transactionDate.isAfter(startDate))
+                {
+                    System.out.printf("%s","%s","%s","%s","f",
+                            transaction.getDate(), transaction.getTime(), transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
 
                 }else
                 {
@@ -354,8 +354,6 @@ public class FinancialTracker {
                 }
 
 
-
-            }
         }
 
         // This method filters the transactions by date and prints a report to the console.
@@ -366,24 +364,25 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByVendor(String vendor) {
-        for (Transaction transaction : transactions){
+        for (Transaction transaction : transactions)
+        {
             String theVendor = transaction.getVendor();
 
             if (transactions.contains(theVendor))
             {
-                System.out.printf("%s","%s","%s","%s","%f",
-                        transaction.getDate(),transaction.getTime(),transaction.getDescription(),transaction.getVendor(),transaction.getAmount());
-            }else
+                System.out.printf("%s", "%s", "%s", "%s", "%f",
+                        transaction.getDate(), transaction.getTime(), transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
+            } else
             {
                 System.out.println("There are no results in this range");
             }
         }
 
-
+    }
         // This method filters the transactions by vendor and prints a report to the console.
         // It takes one parameter: vendor, which represents the name of the vendor to filter by.
         // The method loops through the transactions list and checks each transaction's vendor name against the specified vendor name.
         // Transactions with a matching vendor name are printed to the console.
         // If no transactions match the specified vendor name, the method prints a message indicating that there are no results.
-    }
+
 }
