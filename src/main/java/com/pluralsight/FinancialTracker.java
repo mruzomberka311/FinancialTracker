@@ -192,6 +192,10 @@ public class FinancialTracker {
             }
             Transaction payment = new Transaction(currentDate,currentTime, paymentDescription, paymentVendor, paymentAmount);
             transactions.add(payment);
+            FileWriter writer = new FileWriter(FILE_NAME, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write(payment);
+            bufferedWriter.close();
         }
         catch (Exception e)
         {
