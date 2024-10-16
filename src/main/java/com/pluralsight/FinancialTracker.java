@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import jdk.jshell.execution.LoaderDelegate;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -142,7 +144,7 @@ public class FinancialTracker {
             FileWriter writer = new FileWriter(FILE_NAME ,true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
-            bufferedWriter.write(deposit);
+            bufferedWriter.write(String.valueOf(deposit));
             bufferedWriter.close();
 
 
@@ -194,7 +196,7 @@ public class FinancialTracker {
             transactions.add(payment);
             FileWriter writer = new FileWriter(FILE_NAME, true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            bufferedWriter.write(payment);
+            bufferedWriter.write(String.valueOf(payment));
             bufferedWriter.close();
         }
         catch (Exception e)
@@ -297,29 +299,34 @@ public class FinancialTracker {
             switch (input) {
                 case "1":
 
-                    filterTransactionsByDate();
+                    LocalDate monthToDate = LocalDate(Transaction).getMonth();
+                    filterTransactionsByDate(monthToDate);
+                    break;
                     // Generate a report for all transactions within the current month,
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "2":
 
                     filterTransactionsByDate();
+                    break;
                     // Generate a report for all transactions within the previous month,
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "3":
 
                     filterTransactionsByDate();
+                    break;
                     // Generate a report for all transactions within the current year,
                     // including the date, time, description, vendor, and amount for each transaction.
 
                 case "4":
 
                     filterTransactionsByDate();
+                    break;
                     // Generate a report for all transactions within the previous year,
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "5":
                     System.out.println("Enter a vendor: ");
                     String selectedVendor = scanner.nextLine();
-                    filterTransactionsByVendor();
+                    filterTransactionsByVendor(selectedVendor);
                     break;
                     // Prompt the user to enter a vendor name, then generate a report for all transactions
                     // with that vendor, including the date, time, description, vendor, and amount for each transaction.
@@ -342,6 +349,7 @@ public class FinancialTracker {
             if (startDate == null  || endDate == null)
                 {
                     System.out.println("Invalid date");
+                    return;
 
                 }else if (transactionDate.isBefore(endDate) && transactionDate.isAfter(startDate))
                 {
@@ -351,6 +359,7 @@ public class FinancialTracker {
                 }else
                 {
                     System.out.println("Transactions not in specified range");
+                    return;
                 }
 
 
@@ -370,6 +379,7 @@ public class FinancialTracker {
 
             if (transactions.contains(theVendor))
             {
+                transactions.sort();
                 System.out.printf("%s", "%s", "%s", "%s", "%f",
                         transaction.getDate(), transaction.getTime(), transaction.getDescription(), transaction.getVendor(), transaction.getAmount());
             } else
@@ -384,5 +394,8 @@ public class FinancialTracker {
         // The method loops through the transactions list and checks each transaction's vendor name against the specified vendor name.
         // Transactions with a matching vendor name are printed to the console.
         // If no transactions match the specified vendor name, the method prints a message indicating that there are no results.
+
+
+
 
 }
