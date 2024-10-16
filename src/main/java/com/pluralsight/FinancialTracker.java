@@ -319,15 +319,23 @@ public class FinancialTracker {
 
 
     private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate) {
-        for (Transaction LocalDate : transactions)
+
+        for (Transaction transaction : transactions)
         {
             System.out.println(transactions);
+            LocalDate transactionDate = transaction.getDate();
+
             {
-                if (startDate == null || endDate == null){
+                if (startDate == null || endDate == null)
+                {
                     System.out.println("Invalid date");
 
-                }else if (startDate.isBefore(LocalDate) && endDate.isAfter(LocalDate)){
-                    for ()
+                }else if (transactionDate.isBefore(endDate) && transactionDate.isAfter(startDate)) {
+                    System.out.printf(Transaction.getDate(), Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
+
+                }else
+                {
+                    System.out.println("Transactions not in specified range");
                 }
 
 
@@ -343,6 +351,9 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByVendor(String vendor) {
+        
+
+
         // This method filters the transactions by vendor and prints a report to the console.
         // It takes one parameter: vendor, which represents the name of the vendor to filter by.
         // The method loops through the transactions list and checks each transaction's vendor name against the specified vendor name.
