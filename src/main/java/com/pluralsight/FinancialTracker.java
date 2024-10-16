@@ -293,19 +293,30 @@ public class FinancialTracker {
             switch (input) {
                 case "1":
 
+                    filterTransactionsByDate();
                     // Generate a report for all transactions within the current month,
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "2":
+
+                    filterTransactionsByDate();
                     // Generate a report for all transactions within the previous month,
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "3":
+
+                    filterTransactionsByDate();
                     // Generate a report for all transactions within the current year,
                     // including the date, time, description, vendor, and amount for each transaction.
 
                 case "4":
+
+                    filterTransactionsByDate();
                     // Generate a report for all transactions within the previous year,
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "5":
+                    System.out.println("Enter a vendor: ");
+                    String selectedVendor = scanner.nextLine();
+                    filterTransactionsByVendor();
+                    break;
                     // Prompt the user to enter a vendor name, then generate a report for all transactions
                     // with that vendor, including the date, time, description, vendor, and amount for each transaction.
                 case "0":
@@ -351,7 +362,18 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByVendor(String vendor) {
-        
+        for (Transaction transaction : transactions){
+            String theVendor = transaction.getVendor();
+
+            if (transactions.contains(theVendor))
+            {
+                System.out.printf("%s","%s","%s","%s","%f",
+                        transaction.getDate(),transaction.getTime(),transaction.getDescription(),transaction.getVendor(),transaction.getAmount());
+            }else
+            {
+                System.out.println("There are no results in this range");
+            }
+        }
 
 
         // This method filters the transactions by vendor and prints a report to the console.
