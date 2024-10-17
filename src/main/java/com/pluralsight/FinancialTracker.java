@@ -149,6 +149,7 @@ public class FinancialTracker
 
 
             bufferedWriter.write(deposit.toString());
+            bufferedWriter.newLine();
             bufferedWriter.close();
 
 
@@ -203,6 +204,7 @@ public class FinancialTracker
             FileWriter writer = new FileWriter(FILE_NAME, true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write(payment.toString());
+            bufferedWriter.newLine();
             bufferedWriter.close();
         }
         catch (Exception e)
@@ -370,18 +372,13 @@ public class FinancialTracker
         for (Transaction Transaction : transactions)
         {
             LocalDate transactionDate = Transaction.getDate();
-            if (!transactionDate.isBefore(endDate) && !transactionDate.isAfter(startDate.minusDays(1)))
+            if (transactionDate.isBefore(endDate.plusDays(1)) && transactionDate.isAfter(startDate.minusDays(1)))
             {
                 System.out.printf("%-11s|%-9s|%-28s|%-20s|%-10.2f",
                         Transaction.getDate(),Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
 
 
             }
-           else
-                {
-                    System.out.println("Transactions not in specified range");
-                    return;
-                }
 
 
         }
@@ -404,9 +401,6 @@ public class FinancialTracker
             {
                 System.out.printf("%-11s", "%-9s", "%-28s", "%-20s", "%-10.2f",
                         Transaction.getDate(), Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
-            } else
-            {
-                System.out.println("There are no results in this range");
             }
 
         }
