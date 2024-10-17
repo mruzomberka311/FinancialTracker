@@ -1,17 +1,21 @@
-# Project Title
+# Financial Tracker
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
-
-![Class Diagram](path/to/your/class_diagram.png)
+In this project, the goal is to create functioning financial tracker that is able to add to a ledger, and track each change as
+it happens. The changes are then written and saved to a corresponding exel file. The program can also display the history
+of each action. The user can filter the actions for more convenient use. Overall the project is meant to provide an interface with 
+a variety of options and situations.
 
 ## User Stories
 
 List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+- As a customer, I would like to have a clear, and interactive home screen.
+- As a worker, I would like to be able to access the ledger.
+- As a customer I would like to be able to make deposits and withdrawals.
+- As a worker, I want to be able to display the ledger and each element of the ledger, so I can find certain information.
+- 
 
 ## Setup
 

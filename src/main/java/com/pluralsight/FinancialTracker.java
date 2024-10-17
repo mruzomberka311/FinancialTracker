@@ -273,7 +273,10 @@ public class FinancialTracker
         System.out.println("Date" + "|" + "Time" + "|" + "Description" + "|" + "Vendor" + "|" + "Amount");
         for (Transaction deposit : transactions)
         {
-            System.out.println(deposit);
+            if (deposit.getAmount() > 0)
+            {
+                System.out.println(deposit);
+            }
         }
 
     }
@@ -316,9 +319,9 @@ public class FinancialTracker
             switch (input)
             {
                 case "1":
-                    LocalDate monthToDate = LocalDate.now();
-                    LocalDate md1 = LocalDate.now().withDayOfMonth(1);
-                    filterTransactionsByDate(md1, monthToDate);
+                    LocalDate todaysDate = LocalDate.now();
+                    LocalDate md1 = todaysDate.withDayOfMonth(1);
+                    filterTransactionsByDate(md1, todaysDate);
                     break;
                     // Generate a report for all transactions within the current month,
                     // including the date, time, description, vendor, and amount for each transaction.
@@ -331,7 +334,7 @@ public class FinancialTracker
                     // including the date, time, description, vendor, and amount for each transaction.
                 case "3":
                     LocalDate yearToDate = LocalDate.now();
-                    LocalDate yr1 = LocalDate.now().withDayOfYear(1);
+                    LocalDate yr1 = yearToDate.withDayOfYear(1);
                     filterTransactionsByDate(yr1,yearToDate);
                     break;
                     // Generate a report for all transactions within the current year,
@@ -366,18 +369,15 @@ public class FinancialTracker
 
         for (Transaction Transaction : transactions)
         {
-            LocalDate TransactionDate = Transaction.getDate();
-            if (startDate == null  || endDate == null)
-                {
-                    System.out.println("Invalid date");
-                    return;
+            LocalDate transactionDate = Transaction.getDate();
+            if (!transactionDate.isBefore(endDate) && !transactionDate.isAfter(startDate.minusDays(1)))
+            {
+                System.out.printf("%-11s|%-9s|%-28s|%-20s|%-10.2f",
+                        Transaction.getDate(),Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
 
-                }else if (TransactionDate.isBefore(endDate) && TransactionDate.isAfter(startDate.minusDays(1)))
-                {
-                    System.out.printf("%-11s|%-9s|%-28s|%-20s|%-10.2f",
-                            Transaction.getDate(), Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
 
-                }else
+            }
+           else
                 {
                     System.out.println("Transactions not in specified range");
                     return;
