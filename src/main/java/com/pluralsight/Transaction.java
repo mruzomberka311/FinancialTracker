@@ -2,6 +2,8 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
+import java.util.Timer;
 
 public class Transaction {
     private LocalDate date;
@@ -57,5 +59,9 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+    public String toString(){
+        return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
+
     }
 }
