@@ -112,9 +112,9 @@ public class FinancialTracker {
 
     private static void addDeposit(Scanner scanner) {
         try {
-            System.out.println("Please enter the date: ");
+            System.out.println("Please enter the date: YYYY-MM-dd");
             LocalDate currentDate = LocalDate.parse(scanner.nextLine().formatted(DATE_FORMAT));
-            System.out.println("Please enter the current time: ");
+            System.out.println("Please enter the current time: HH-mm-ss ");
             LocalTime currentTime = LocalTime.parse(scanner.nextLine().formatted(TIME_FORMAT));
             System.out.println("Please enter a description of deposit: ");
             String depositDescription = scanner.nextLine();
@@ -129,6 +129,7 @@ public class FinancialTracker {
                 if (scanner.nextLine().equalsIgnoreCase("Y"))
                 {
                     Math.abs(depositAmount);
+                    System.out.println("Deposit successful!");
                 } else if (scanner.nextLine().equalsIgnoreCase("N"))
                 {
                     return;
@@ -136,12 +137,11 @@ public class FinancialTracker {
             }
             Transaction deposit = new Transaction(currentDate, currentTime, depositDescription, depositVendor, depositAmount);
             transactions.add(deposit);
-            System.out.println("Deposit succsessful!");
 
             FileWriter writer = new FileWriter(FILE_NAME ,true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
-//Delete transaction and create toString method in Transaction class, separating by pipes
+
             bufferedWriter.write(deposit.toString());
             bufferedWriter.close();
 
@@ -168,11 +168,11 @@ public class FinancialTracker {
             LocalDate currentDate = LocalDate.parse(scanner.nextLine().formatted(DATE_FORMAT));
             System.out.println("Please enter the current time: ");
             LocalTime currentTime = LocalTime.parse(scanner.nextLine().formatted(TIME_FORMAT));
-            System.out.println("Please enter a description of deposit: ");
+            System.out.println("Please enter a description of payment: ");
             String paymentDescription = scanner.nextLine();
             System.out.println("Please enter the vendor:");
             String paymentVendor = scanner.nextLine();
-            System.out.println("Please enter the amount you would like to deposit: ");
+            System.out.println("Please enter the amount you would like to pay: ");
             double paymentAmount = scanner.nextDouble();
             scanner.nextLine();
             if (paymentAmount >= 0)
@@ -192,6 +192,7 @@ public class FinancialTracker {
             }
             Transaction payment = new Transaction(currentDate,currentTime, paymentDescription, paymentVendor, paymentAmount);
             transactions.add(payment);
+            System.out.println("Payment successful!");
             FileWriter writer = new FileWriter(FILE_NAME, true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write(payment.toString());
@@ -215,7 +216,7 @@ public class FinancialTracker {
         while (running) {
             System.out.println("Ledger");
             System.out.println("Choose an option:");
-            System.out.println("A) A`ll");
+            System.out.println("A) All");
             System.out.println("D) Deposits");
             System.out.println("P) Payments");
             System.out.println("R) Reports");
@@ -272,11 +273,11 @@ public class FinancialTracker {
 
     private static void displayPayments()
     {
-
+        System.out.println("Date      " + "|" + "Time         " + "|" + "Description                      " + "|" + "Vendor                    " + "|" + "Amount          ");
        for (Transaction payment : transactions)
         {
             //if amount is negative
-            System.out.println("Date      " + "|" + "Time         " + "|" + "Description                      " + "|" + "Vendor                    " + "|" + "Amount          ");
+
             System.out.println(payment);
         }
     }
@@ -378,6 +379,7 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByVendor(String vendor) {
+
         for (Transaction transaction : transactions) {
             String theVendor = transaction.getVendor();
 
