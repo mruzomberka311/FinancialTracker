@@ -135,7 +135,7 @@ public class FinancialTracker
                 if (scanner.nextLine().equalsIgnoreCase("Y"))
                 {
                     Math.abs(depositAmount);
-                    System.out.println("Deposit successful!");
+
                 } else if (scanner.nextLine().equalsIgnoreCase("N"))
                 {
                     return;
@@ -143,6 +143,7 @@ public class FinancialTracker
             }
             Transaction deposit = new Transaction(currentDate, currentTime, depositDescription, depositVendor, depositAmount);
             transactions.add(deposit);
+            System.out.println("Deposit successful!");
 
             FileWriter writer = new FileWriter(FILE_NAME ,true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
@@ -185,7 +186,7 @@ public class FinancialTracker
             scanner.nextLine();
             if (paymentAmount >= 0)
             {
-                System.out.println("The amount must be a negative value. Would you like to proceed? Y/N");
+                System.out.println("The amount given was positive, would you like to continue making this payment? Y/N");
 
                 if (scanner.nextLine().equalsIgnoreCase("Y"))
                 {
@@ -344,7 +345,7 @@ public class FinancialTracker
 
                 case "4":
                     LocalDate previousYear = LocalDate.now().minusYears(1);
-                    LocalDate yearLength = LocalDate.now().withDayOfYear(previousYear.lengthOfYear());
+                    LocalDate yearLength = previousYear.withDayOfYear(previousYear.lengthOfYear());
                     filterTransactionsByDate(previousYear,yearLength);
                     break;
                     // Generate a report for all transactions within the previous year,
@@ -374,7 +375,7 @@ public class FinancialTracker
             LocalDate transactionDate = Transaction.getDate();
             if (transactionDate.isBefore(endDate.plusDays(1)) && transactionDate.isAfter(startDate.minusDays(1)))
             {
-                System.out.printf("%-11s|%-9s|%-28s|%-20s|%-10.2f",
+                System.out.printf("%-11s|%-9s|%-28s|%-20s|%-10.2f,\n",
                         Transaction.getDate(),Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
 
 
@@ -397,9 +398,9 @@ public class FinancialTracker
         {
             String theVendor = Transaction.getVendor();
 
-            if (vendor.equals(theVendor))
+            if (vendor.equalsIgnoreCase(theVendor))
             {
-                System.out.printf("%-11s", "%-9s", "%-28s", "%-20s", "%-10.2f",
+                System.out.printf("%-11s|%-9s|%-28s|%-20s|%-10.2f \n",
                         Transaction.getDate(), Transaction.getTime(), Transaction.getDescription(), Transaction.getVendor(), Transaction.getAmount());
             }
 

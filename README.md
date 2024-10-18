@@ -15,7 +15,9 @@ List the user stories that guided the development of your application. Format th
 - As a worker, I would like to be able to access the ledger.
 - As a customer I would like to be able to make deposits and withdrawals.
 - As a worker, I want to be able to display the ledger and each element of the ledger, so I can find certain information.
-- 
+- As a user, I want to be able have a menu that is easy to navigate, so that I cant achieve task quickly.
+- As a worker, I would like to be able to filter transactions, so that it is easy to find certain ones I may need.
+- As a user, I would like the program to run as efficiently as possible, so that it doesn't cause confusion.
 
 ## Setup
 
@@ -43,32 +45,35 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Demo
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
-
+- ![ss of home menu CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20home%20menu%20CS1.png)
+- ![ss of addDeposit method CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20addDeposit%20method%20CS1.png)
+-![ss of displayPayments method CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20displayPayments%20method%20CS1.png)
+- ![ss of filterbyDate method CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20filterbyDate%20method%20CS1.png)
+- ![ss of filterByVendor method CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20filterByVendor%20method%20CS1.png)
+- 
 ## Future Work
 
 Outline potential future enhancements or functionalities you might consider adding:
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+- Ways to remove information
+- Extending the information to include different accounts
 
 ## Resources
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
+- https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html
+- https://www.w3schools.com/java/
+- https://www.tutorialspoint.com/javatime/javatime_monthday_withdayofmonth.html
+- https://www.youtube.com/watch?v=xk4_1vDrzzo&t=10145s
+- 
+
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- **Name 1** - Matthew Ruzomberka 
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
-
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+Thank you to Raymond for his superb guidance and patience helping me. I also want to thank my peers and year up 
+for all of their help and motivation.
