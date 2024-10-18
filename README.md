@@ -40,8 +40,14 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java: Version 17
+- java.time LocalDate
+- java.time LocalTime
+- java.time.format DateTimeFormatter
+- java.util.ArrayList;
+- import java.util.Locale;
+- import java.util.Scanner;
+- -java.io *
 
 ## Demo
 
@@ -50,7 +56,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 -![ss of displayPayments method CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20displayPayments%20method%20CS1.png)
 - ![ss of filterbyDate method CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20filterbyDate%20method%20CS1.png)
 - ![ss of filterByVendor method CS1.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2Fss%20of%20filterByVendor%20method%20CS1.png)
-- 
+
 ## Future Work
 
 Outline potential future enhancements or functionalities you might consider adding:
@@ -75,5 +81,6 @@ List resources such as tutorials, articles, or documentation that helped you dur
 
 ## Thanks
 
-Thank you to Raymond for his superb guidance and patience helping me. I also want to thank my peers and year up 
-for all of their help and motivation.
+Thank you to Raymond for his superb guidance and patience helping me. Thank you to Mehmet and Chris for your help when I had questions
+I also want to thank my peers and year up for all of their help and motivation.
+

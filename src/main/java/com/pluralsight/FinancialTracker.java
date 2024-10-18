@@ -88,6 +88,7 @@ public class FinancialTracker
                 System.err.println("Error processing file");
                 e.printStackTrace();
             }
+            //Creates new file if no file is provided
         } else
         {
             System.out.println("File does not exist. Creating new file: " + fileName);
@@ -129,6 +130,7 @@ public class FinancialTracker
             System.out.println("Please enter the amount you would like to deposit: ");
             double depositAmount = scanner.nextDouble();
            scanner.nextLine();
+           //Double-checking in case of user mistake
             if (depositAmount <= 0)
             {
                 System.out.println("The amount must be a positive value. Would you like to proceed?  Y/N");
@@ -184,6 +186,7 @@ public class FinancialTracker
             System.out.println("Please enter the amount you would like to pay: ");
             double paymentAmount = scanner.nextDouble();
             scanner.nextLine();
+            //Double-checking in case the user made a mistake
             if (paymentAmount >= 0)
             {
                 System.out.println("The amount given was positive, would you like to continue making this payment? Y/N");
@@ -369,7 +372,7 @@ public class FinancialTracker
 
     private static void filterTransactionsByDate(LocalDate startDate, LocalDate endDate)
     {
-
+//runs through transactions and prints between dates and prints in format.
         for (Transaction Transaction : transactions)
         {
             LocalDate transactionDate = Transaction.getDate();
@@ -393,7 +396,7 @@ public class FinancialTracker
 
     private static void filterTransactionsByVendor(String vendor)
     {
-
+// prints transactions from the given vendor
         for (Transaction Transaction : transactions)
         {
             String theVendor = Transaction.getVendor();
